@@ -1,7 +1,10 @@
 <div class="container-fluid">
   <h1>Bootcamp Enrollment Form</h1>
+  <div class="alert alert-danger" *ngIf="errorMsg">
+    {{errorMsg}}
+  </div>
 
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()">
     <div class="form-group mb-3">
       <label for="name">Name</label>
       <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid" class="form-control" id="name" placeholder="Enter name" name="userName" [(ngModel)]="userModel.name">
